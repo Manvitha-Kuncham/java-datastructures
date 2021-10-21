@@ -1,0 +1,27 @@
+import java.util.*;
+public class Main
+{
+public static void main(String[] args) {
+Scanner sc=new Scanner(System.in);
+int k=sc.nextInt();
+char a[]=new char[k];
+for(int i=0;i<k;i++){
+   a[i]=sc.next().charAt(0);
+}
+int start=0;
+int c=0;
+Map<Character,Integer> b=new HashMap<>();
+for(int i=0;i<k;i++){
+   b.put(a[i],b.getOrDefault(a[i],0)+1);
+   while(b.size()>2){
+       b.put(a[start],b.getOrDefault(a[start],0)-1);
+       if(b.getOrDefault(a[start],0)==0){
+           b.remove(a[start]);
+       }
+       start++;
+   }
+   c=Math.max(c,i-start+1);
+}
+System.out.println(c);
+}
+}
