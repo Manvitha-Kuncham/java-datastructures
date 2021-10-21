@@ -1,0 +1,22 @@
+import java.util.*;
+public class Main
+{
+public static void main(String[] args) {
+Scanner sc=new Scanner(System.in);
+String s=sc.next();
+int k=sc.nextInt();
+int start=0,a=0,c=0,res=0;
+Map<Character,Integer> b=new HashMap<>();
+for(int i=0;i<s.length();i++){
+   b.put(s.charAt(i),b.getOrDefault(s.charAt(i),0)+1);
+   c=Math.max(c,b.get(s.charAt(i)));
+   a=i-start+1;
+   if ((a-c)>k){
+       b.put(s.charAt(i),b.getOrDefault(s.charAt(i),0)-1);
+       start++;
+   }
+   res=Math.max(res,a);
+}
+System.out.println(res);
+}
+}
